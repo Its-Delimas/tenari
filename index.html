@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenari - Book Your Tickets</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>Tenari</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Book Your Perfect Experience</h2>
+            <p>Discover amazing events and book tickets instantly</p>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search for events, concerts, movies...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events -->
+    <section id="events" class="events-section">
+        <div class="container">
+            <h2 class="section-title">Featured Events</h2>
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="concerts">Concerts</button>
+                <button class="filter-btn" data-filter="movies">Movies</button>
+                <button class="filter-btn" data-filter="sports">Sports</button>
+                <button class="filter-btn" data-filter="theater">Theater</button>
+            </div>
+            <div class="events-grid" id="eventsGrid">
+                <!-- Events will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h3 id="modalEventTitle">Event Title</h3>
+                <p id="modalEventDetails">Event Details</p>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="ticketType">Ticket Type:</label>
+                        <select id="ticketType" required>
+                            <option value="">Select Ticket Type</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" min="1" max="10" value="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerName">Full Name:</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerEmail">Email:</label>
+                        <input type="email" id="customerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerPhone">Phone:</label>
+                        <input type="tel" id="customerPhone" required>
+                    </div>
+                    <div class="price-summary">
+                        <div class="price-line">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="price-line">
+                            <span>Service Fee:</span>
+                            <span id="serviceFee">$2.50</span>
+                        </div>
+                        <div class="price-line total">
+                            <span>Total:</span>
+                            <span id="totalPrice">$2.50</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="book-btn">Complete Booking</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <div class="confirmation-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Booking Confirmed!</h3>
+                <p>Your tickets have been successfully booked.</p>
+                <div class="booking-details" id="bookingDetails"></div>
+                <button class="close-btn" onclick="closeConfirmationModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Tenari</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Tenari is your go-to platform for booking tickets to the most exciting events. From concerts and movies to sports and theater, we make it easy to discover and book tickets for unforgettable experiences.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-bolt"></i>
+                            <h4>Instant Booking</h4>
+                            <p>Book tickets instantly with our fast and secure platform</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Secure Payments</h4>
+                            <p>Your payment information is always safe and secure</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>Mobile Tickets</h4>
+                            <p>Get your tickets delivered directly to your mobile device</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tenari</h3>
+                    <p>Your premier ticket booking destination</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> info@tenari.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tenari. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
