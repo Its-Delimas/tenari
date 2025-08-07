@@ -156,7 +156,6 @@ function setupEventListeners() {
     });
 }
 
-// Render events in the grid
 function renderEvents(events) {
     eventsGrid.innerHTML = '';
     
@@ -171,7 +170,6 @@ function renderEvents(events) {
     });
 }
 
-// Create individual event card
 function createEventCard(event) {
     const card = document.createElement('div');
     card.className = 'event-card';
@@ -194,7 +192,7 @@ function createEventCard(event) {
                 </div>
                 <button class="book-btn" data-event-id="${event.id}">Book Now</button>
                         `;
-                // Add event listener for booking button
+             
                 card.querySelector('.book-btn').addEventListener('click', () => openBookingModal(event));
                 return card;
             }
